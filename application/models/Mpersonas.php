@@ -11,8 +11,9 @@ class Mpersonas extends CI_MODEL {
 
  	/*funcion que debuelve toda las razas de la tablas razas*/
  	public function get_all(){
- 		$query = $this->db->get('cor_personas');
-        $this->db->where('per_estado',"1");
+ 		$this->db->where('per_estado',1);
+    $query = $this->db->get('cor_personas');
+      
  		$result = $query->result();
  		return $result;
  	}

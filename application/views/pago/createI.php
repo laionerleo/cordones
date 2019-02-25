@@ -59,20 +59,14 @@
                                              <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">TRABAJADOR</label>
                                                 <div class="col-sm-10">
-                                                    <select id="slcperid" name="slcperid"  class="form-control">
-                                                      <?php for ($i=0; $i < count($personas) ; $i++) { 
-                                                        ?>
-                                                        <option value="<?php echo $personas[$i]->per_id ?>"> <?php echo $personas[$i]->per_nombre ?></option>
-                                                    <?php } ?>
-
-                                                    </select>
+                                                    <input type="number" name="inpperid" id="inpperid">
                                                   
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">CANTIDAD</label>
+                                                <label class="col-sm-2 col-form-label">monto</label>
                                                 <div class="col-sm-10">
-                                                    <input id="inpcantidad"  name="inpcantidad" type="number" class="form-control" placeholder="introducir cantidad">
+                                                    <input id="inpmonto"  name="inpmonto" type="number" class="form-control" placeholder="introducir cantidad">
                                                 </div>
                                             </div>
                                             
@@ -87,7 +81,7 @@
                                                 
                                                 <div class="col-sm-10">
                                                          <input type="hidden" name="url" id="url" value="<?=$url?>">
-                                                <button id="btningresar" type="button" class="btn btn-primary">INGRESAR</button>
+                                                <button id="btningresar" type="button" class="btn btn-primary">guardar</button>
 
 
                                                 </div>
@@ -108,22 +102,16 @@
                                 </div> <!-- end card-->
                             </div><!-- end col -->
                         </div>
-                        <div id="listarproduccion">
-                        <?php $this->load->View('produccion/listarproduccion'); ?>
-                        </div>
                         <!-- end row -->
                         <script type="text/javascript">
                            
 
                             $("#btningresar").click(
                                     function () {
-                                         var cant =$("#inpcantidad").val();
-                                         if (cant>0) {
-                                      
+                                         
                                                             var datos=$("#formproduccion").serialize();
-                                                            var urlajax=$("#url").val()+"produccion/guardarproduccion";    
-                                                              $("#listarproduccion").load(urlajax,{datos});   
-                                                                  /* $.ajax({                    
+                                                            var urlajax=$("#url").val()+"pago/ingeniero";      
+                                                                   $.ajax({                    
                                                                         url: urlajax,
                                                                         data: {datos},
                                                                         type : 'POST',
@@ -147,11 +135,8 @@
                                                                              
                                                                         },
                                                                     }
-                                                                    );*/
+                                                                    );
 
-                                                                }else{
-                                                                     $("#inpcantidad").focus();
-                                                                }
 
 
                                                                          

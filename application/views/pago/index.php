@@ -53,11 +53,13 @@
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
-                                            
-                                            <h5 class="text-muted font-weight-normal mt-0">Total Cordones</h5>
-                                            <h3 class="mt-2"><?php echo $totalcordones[0]->pro_cantidad ?></h3>
+                                            <div class="float-right">
+                                                <i class="mdi mdi-currency-usd text-danger widget-icon"></i>
+                                            </div>
+                                            <h5 class="text-muted font-weight-normal mt-0">Total canceladp</h5>
+                                            <h3 class="mt-2"> </h3>
                                         </div>
-                                        
+                                        <div id="sparkline1"></div>
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
@@ -66,10 +68,10 @@
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
-                                                <a href="<?=$url?>produccion/registrar/0">
-                                                <h5 class="text-muted font-weight-normal mt-0">Ingresar</h5> 
-                                               <h3 class="mt-2">Nueva produccion +</h3></a>
-                                            
+                                            <div class="float-right">
+                                                 
+                                               <a href="<?=$url?>produccion/registrar/0"><p style="font-size: 25px">Nueva Pago</p></a>
+                                            </div>
                                             
                                             
 
@@ -95,17 +97,19 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>FECHA </th>
-                                                <th>PRODUCCION</th>
+                                                <th>DETALLE</th>
+                                                <th>MONTO</th>
                                                 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php for ($i=0; $i < count($producciondiaria) ; $i++) { 
+                                                <?php for ($i=0; $i < count($pagoingeniero) ; $i++) { 
                                                 ?>
                                             <tr>
                                                 <th scope="row"><?php echo $i ?></th>
-                                                <td><?php echo $producciondiaria[$i]->fecha ?></td>
-                                                <td><?php echo $producciondiaria[$i]->cantidad ?></td>
+                                                <td><?php echo $pagoingeniero[$i]->pag_fecha ?></td>
+                                                <td><?php echo $pagoingeniero[$i]->detalle ?></td>
+                                                <td><?php echo $pagoingeniero[$i]->pag_monto ?></td>
                                                 
                                             </tr>
                                         <?php } ?>
@@ -115,9 +119,9 @@
                                     </div> <!-- end card-body -->
                                 </div>
                             </div> <!-- end col -->
+        
                             
                         </div>
-                     <?php $this->load->View('produccion/listarproduccion'); ?>
 
 
 

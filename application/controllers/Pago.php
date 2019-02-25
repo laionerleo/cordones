@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produccion extends CI_Controller {
+class Pago extends CI_Controller {
 
 	public function __construct(){
         
@@ -20,7 +20,7 @@ class Produccion extends CI_Controller {
         $this->lang->load('welcome');
 
         //cargamos los modelos
-        $this->load->model(array('Msecurity','Mpersonas','Mproduccion'));
+        $this->load->model(array('Msecurity','Mpersonas','Mproduccion','Mpago'));
 
     }
 
@@ -30,57 +30,52 @@ class Produccion extends CI_Controller {
 	{	
 		$d = array();
 		$this->Msecurity->url_and_lan($d);
-		 $d["totalcordones"]=$this->Mproduccion->gettotalcordones();
-		 $d["producciondiaria"]=$this->Mproduccion->getproducciondiaria();
-		 $d["produccion"]=$this->Mproduccion->getproduccion();
-
-		$this->load->view('produccion/index', $d);
+		$d["pagoingeniero"]=$this->Mpago->getpagoingeniero();
+		print_r($d["pagoingeniero"]);
+		
+		$this->load->view('pago/index', $d);
 	
 	}
 	/**/
 	
 	
-	public function registrar($lan, $idproduccion){
+	public function registrarI(){
         $d = array();
         $this->Msecurity->url_and_lan($d);
-		if ($idproduccion==0) {
-		$d["produccion"]=$this->Mproduccion->getproduccion();
-		$d["personas"]=$this->Mpersonas->get_all();
-		$this->load->view('produccion/create',$d);        	
+        
+		$this->load->view('pago/createI',$d);        	
       
 		}	
-    }
 	/**/
-	public function eliminar($lan, $idproduccion){
-        $d = array();
+	public function registrarT(){
+         $d = array();
         $this->Msecurity->url_and_lan($d);
-        //$d["colegios"]= $this->Mestudiante->get_all_colegios();
-		
-		$this->Mproduccion->eliminarproduccion($idproduccion);
-	$this->registrar("es",0);
-	
-		      
-			
+        
+		$this->load->view('pago/createT',$d);    
     }
 	/**/
-	   public function guardar()
+	   public function pagoingeniero()
    {
-        $d = array();
-		$this->Msecurity->url_and_lan($d);
         parse_str($this->input->post("datos"), $nuevodato);
         $nuevodato = $this->Msecurity->sanear_array($nuevodato);
-          $ok=$this->Mproduccion->guardar($nuevodato);
-          $d["produccion"]=$this->Mproduccion->getproduccion();
-
-      	$this->load->view('produccion/listarproduccion',$d);        		    
-
+          $ok=$this->Mpago->guardarI($nuevodato);
        
         
  
        
    }
 	/**/
-
+	   public function pagotrabajadores()
+   {
+        parse_str($this->input->post("datos"), $nuevodato);
+        $nuevodato = $this->Msecurity->sanear_array($nuevodato);
+          $ok=$this->Mpago->guardarT($nuevodato);
+       
+        
+ 
+       
+   }
+	/**/
 	public function error404($lan='es')
 	{
 		$d = array();

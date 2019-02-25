@@ -34,12 +34,22 @@
                                 </a>
                             </li>
 
-                             <li>
-                                <a href="index.html">
-                                    <i class="fe-airplay"></i>
-                                    
-                                    <span> pagos</span>
+                             
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fe-folder-plus"></i>
+                                    <span> PAGOS </span>
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-second-level nav collapse" aria-expanded="true">
+                                    <li>
+                                        <a href="">pagos del ingeniero </a>
+                                    </li>
+                                    <li>
+                                        <a href="">pagos a trabajadores</a>
+                                    </li>
+                                    
+                                </ul>
                             </li>
 
                             

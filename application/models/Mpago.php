@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mproduccion extends CI_MODEL {
+class Mpago extends CI_MODEL {
 	/**/
 	public function __construct()
     {
@@ -11,18 +11,17 @@ class Mproduccion extends CI_MODEL {
 
  	/*funcion que debuelve toda las razas de la tablas razas*/
  	public function get_all(){
-        $this->db->where('pro_estado',"1");
  		$query = $this->db->get('cur_cursos');
  		$result = $query->result();
  		return $result;
  	}
  	/**/
- 	public function gettotalcordones(){
+ 	public function getpagoingeniero(){
 
  		
-        $this->db->select_sum('pro_cantidad');
         
-        $total=$this->db->get("cor_produccion");
+    	$this->db->where('per_id',5);    
+        $total=$this->db->get("cor_pago");
         $result = $total->result();
         return $result;
  	}
@@ -32,19 +31,6 @@ class Mproduccion extends CI_MODEL {
          $this->db->group_by('pro_fecha'); 
         $total=$this->db->get("cor_produccion");
         $result = $total->result();
-        return $result;
-        
-    }
-    /**/
-    public function getproduccion(){
-        $this->db->select("cor_produccion.pro_fecha , cor_produccion.pro_cantidad,cor_personas.per_nombre ,cor_produccion.pro_id")
-         ->from('cor_produccion')
-         ->order_by("cor_produccion.pro_fecha", "desc")
-         ->where('pro_estado',"1")
-         ->join('cor_personas', 'cor_produccion.per_id = cor_personas.per_id');
-            $query = $this->db->get();
-
-        $result = $query->result();
         return $result;
         
     }
@@ -78,19 +64,6 @@ class Mproduccion extends CI_MODEL {
 
     return $dator['h_cur_id'];
     }
-
-    /**/
-    public function eliminarproduccion($id){
-    
-    $datos = array( 'pro_estado' => "0"
-                
-                        );
-    $this->db->where('pro_id',$id);
-    $this->db->update("cor_produccion",$datos);
-
-    
-    }
-    /**/
- 	
+ 	/**/
 
 }
