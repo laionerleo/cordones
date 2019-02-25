@@ -31,8 +31,11 @@ class Produccion extends CI_Controller {
 		$d = array();
 		$this->Msecurity->url_and_lan($d);
 		  $d["totalcordones"]=$this->Mproduccion->gettotalcordones();
+		  $d["producciondiaria"]=$this->Mproduccion->getproducciondiaria();
+		  //print_r($d["producciondiaria"]);
+		  
 		 // print_r($d["personas"]);
-		  print_r($d["totalcordones"]);
+		  //print_r($d["totalcordones"]);
 
 
 		$this->load->view('produccion/index', $d);

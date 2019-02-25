@@ -45,15 +45,16 @@
                             </div>
                         </div>     
                         <!-- end page title --> 
+                </div>
 
-              <div>
+              
                    <div class="row">
                             <div class="col-xl-3 col-lg-6">
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
                                             <div class="float-right">
-                                                <i class="mdi mdi-cart text-primary widget-icon"></i>
+                                                <i class="mdi mdi-currency-usd text-danger widget-icon"></i>
                                             </div>
                                             <h5 class="text-muted font-weight-normal mt-0">Total Cordones</h5>
                                             <h3 class="mt-2"><?php echo $totalcordones[0]->pro_cantidad ?></h3>
@@ -63,15 +64,73 @@
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
 
-                          
+                          <div class="col-xl-3 col-lg-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body p-0">
+                                        <div class="p-3 pb-0">
+                                            <div class="float-right">
+                                                 
+                                               <a href="<?=$url?>produccion/registrar/0"><p style="font-size: 25px">Nueva produccion +</p></a>
+                                            </div>
+                                            
+                                            
+
+                                            
+                                        </div>
+                                        <div id="sparkline1"></div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
                         </div>
-              </div>
+                    
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">TABLA PRODUCCION</h4>
+                                        <p class="text-muted font-13">
+                                           tabla de produccion diaria separada por fecha
+                                        </p>
+            
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>FECHA </th>
+                                                <th>PRODUCCION</th>
+                                                
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php for ($i=0; $i < count($producciondiaria) ; $i++) { 
+                                                ?>
+                                            <tr>
+                                                <th scope="row"><?php echo $i ?></th>
+                                                <td><?php echo $producciondiaria[$i]->fecha ?></td>
+                                                <td><?php echo $producciondiaria[$i]->cantidad ?></td>
+                                                
+                                            </tr>
+                                        <?php } ?>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end card-body -->
+                                </div>
+                            </div> <!-- end col -->
+        
+                            
+                        </div>
+
+
+
+
+                    </div>
 
                        
                         <!-- end row -->
                     </div> <!-- container -->
 
-                </div> <!-- content -->
+                <!-- content -->
 
                 <!-- Footer Start -->
                 <footer class="footer">

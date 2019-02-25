@@ -26,6 +26,15 @@ class Mproduccion extends CI_MODEL {
         return $result;
  	}
  	/**/
+    public function getproducciondiaria(){
+        $this->db->select("pro_fecha as fecha ,sum(pro_cantidad) as cantidad");
+         $this->db->group_by('pro_fecha'); 
+        $total=$this->db->get("cor_produccion");
+        $result = $total->result();
+        return $result;
+        
+    }
+    /**/
  	public function guardar($dator){
     
     $datos = array( 'pro_cantidad' =>$dator['inpcantidad'],
