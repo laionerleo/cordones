@@ -22,7 +22,7 @@
                             <li>
                                 <a href="<?=$url?>personas">
                                     <i class="fe-airplay"></i>
-                                    <span class="badge badge-success float-right">08</span>
+                                    
                                     <span> personas </span>
                                 </a>
                             </li>
@@ -37,7 +37,7 @@
                              <li>
                                 <a href="index.html">
                                     <i class="fe-airplay"></i>
-                                    <span class="badge badge-success float-right">08</span>
+                                    
                                     <span> pagos</span>
                                 </a>
                             </li>
