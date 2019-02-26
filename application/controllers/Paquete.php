@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produccion extends CI_Controller {
+class Paquete extends CI_Controller {
 
 	public function __construct(){
         
@@ -20,7 +20,7 @@ class Produccion extends CI_Controller {
         $this->lang->load('welcome');
 
         //cargamos los modelos
-        $this->load->model(array('Msecurity','Mpersonas','Mproduccion'));
+        $this->load->model(array('Msecurity','Mpersonas','Mpaquete'));
 
     }
 
@@ -30,23 +30,23 @@ class Produccion extends CI_Controller {
 	{	
 		$d = array();
 		$this->Msecurity->url_and_lan($d);
-		 $d["totalcordones"]=$this->Mproduccion->gettotalcordones();
-		 $d["producciondiaria"]=$this->Mproduccion->getproducciondiaria();
-		 $d["produccion"]=$this->Mproduccion->getproduccion();
+		 $d["totalpaquetes"]=$this->Mpaquete->gettotalpaquetes();
+		 $d["producciondiariapaquete"]=$this->Mpaquete->getproducciondiaria();
+		 $d["produccionpaquete"]=$this->Mpaquete->getproduccion();
 
-		$this->load->view('produccion/index', $d);
+		$this->load->view('paquete/index', $d);
 	
 	}
 	/**/
 	
 	
-	public function registrar($lan, $idproduccion){
+	public function registrar($lan, $idpaquete){
         $d = array();
         $this->Msecurity->url_and_lan($d);
-		if ($idproduccion==0) {
-		$d["produccion"]=$this->Mproduccion->getproduccion();
+		if ($idpaquete==0) {
+		$d["produccionpaquete"]=$this->Mpaquete->getproduccion();
 		$d["personas"]=$this->Mpersonas->get_all();
-		$this->load->view('produccion/create',$d);        	
+		$this->load->view('paquete/create',$d);        	
       
 		}	
     }
@@ -69,10 +69,10 @@ class Produccion extends CI_Controller {
 		$this->Msecurity->url_and_lan($d);
         parse_str($this->input->post("datos"), $nuevodato);
         $nuevodato = $this->Msecurity->sanear_array($nuevodato);
-          $ok=$this->Mproduccion->guardar($nuevodato);
-          $d["produccion"]=$this->Mproduccion->getproduccion();
+          $ok=$this->Mpaquete->guardar($nuevodato);
+          $d["produccionpaquete"]=$this->Mpaquete->getproduccion();
 
-      	$this->load->view('produccion/listarproduccion',$d);        		    
+      	$this->load->view('paquete/listarproduccionpaquete',$d);        		    
 
        
         

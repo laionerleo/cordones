@@ -17,7 +17,7 @@
 
                         <ul class="metismenu" id="side-menu">
 
-                            <li class="menu-title">Navigation</li>
+                            
 
                             <li>
                                 <a href="<?=$url?>personas">
@@ -33,22 +33,28 @@
                                     <span> produccion    </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?=$url?>paquete">
+                                    <i class="fe-briefcase"></i>
+                                    <span> paquetes    </span>
+                                </a>
+                            </li>
 
-                             
+                           
                             <li>
                                 <a href="javascript: void(0);">
-                                    <i class="fe-folder-plus"></i>
-                                    <span> PAGOS </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-second-level nav collapse" aria-expanded="true">
-                                    <li>
-                                        <a href="">pagos del ingeniero </a>
-                                    </li>
-                                    <li>
-                                        <a href="">pagos a trabajadores</a>
-                                    </li>
+                                    <i class="fe-bookmark"></i>
                                     
+                                    <span> pagos </span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    
+                                    <li>
+                                        <a href="form-advanced.html">pago ingenieroi</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-elements.html">pago trabajadores</a>
+                                    </li>
                                 </ul>
                             </li>
 

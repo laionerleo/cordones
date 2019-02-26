@@ -10,8 +10,13 @@ $i                                        = '^(en|es|de|it|po)';
 
 $route[$l.'personas']                 		= 'Persona';
 $route[$l.'produccion']                 	= 'Produccion';
+$route[$l.'paquete']                 		= 'Paquete';
+
 $route[$l.'produccion/guardarproduccion']   = 'Produccion/guardar';
 $route[$l.'produccion/registrar/(:num)']    = 'Produccion/registrar/$1/$2';
+$route[$l.'paquete/registrar/(:num)']    	= 'Paquete/registrar/$1/$2';
+$route[$l.'paquete/guardarpaquete']   		= 'Paquete/guardar';
+
 
 $route[$l.'eliminarproduccion/(:num)']    = 'Produccion/eliminar/$1/$2';
 
