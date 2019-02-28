@@ -17,15 +17,23 @@ class Mpago extends CI_MODEL {
  	}
  	/**/
  	public function getpagoingeniero(){
-
- 		
-        
-    	$this->db->where('per_id',5);    
+        $this->db->where('per_id',5);    
         $total=$this->db->get("cor_pago");
         $result = $total->result();
         return $result;
  	}
  	/**/
+    public function getpagotrabajadores(){
+        $this->db->select("cor_pago.pag_fecha,cor_pago.pag_monto,cor_personas.per_nombre as nombre , cor_pago.detalle,cor_pago.pag_id")
+        ->from('cor_pago')
+         ->where('cor_pago.pag_estado',"1")
+         ->where('cor_pago.per_id !=',"5")
+        ->join('cor_personas', 'cor_pago.per_id = cor_personas.per_id');
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    /**/
     public function getproducciondiaria(){
         $this->db->select("pro_fecha as fecha ,sum(pro_cantidad) as cantidad");
          $this->db->group_by('pro_fecha'); 
@@ -35,15 +43,29 @@ class Mpago extends CI_MODEL {
         
     }
     /**/
- 	public function guardar($dator){
+    public function getanticipos($per_id,$fechai,$fechaf){
+
+        
+        $this->db->select_sum('pag_monto');
+        $this->db->where('pag_estado',"1");
+        $this->db->where('per_id',$per_id);
+        $this->db->where('pag_fecha BETWEEN "'. date('Y-m-d', strtotime($fechai)). '" and "'. date('Y-m-d', strtotime($fechaf)).'"');
+        $total=$this->db->get("cor_pago");
+        $result = $total->result();
+        return $result;
+    }
+    /**/
+    /**/
+ 	public function guardar($dato){
     
-    $datos = array( 'pro_cantidad' =>$dator['inpcantidad'],
-                'pro_fecha' =>$dator['inpfecha'],
-                'per_id' =>$dator['slcperid'],
-                'pro_estado' =>"1",
+    $datos = array( 'pag_monto' =>$dato['inpmonto'],
+                'pag_fecha' =>$dato['inpfecha'],
+                'detalle' =>$dato['inpdetalle'],
+                'per_id' =>$dato['slcperid'],
+                'pag_estado' =>"1",
                         );
 
-    $this->db->insert("cor_produccion",$datos);
+    $this->db->insert("cor_pago",$datos);
     $cursos=$this->db->insert_id();
     return $cursos;
     }

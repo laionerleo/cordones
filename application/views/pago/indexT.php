@@ -70,7 +70,7 @@
                                         <div class="p-3 pb-0">
                                             <div class="float-right">
                                                  
-                                               <a href="<?=$url?>pagoingeniero/crear"><p style="font-size: 25px">Nuevo Pago</p></a>
+                                               <a href="<?=$url?>pagotrabajadores/crear"><p style="font-size: 25px">Nuevo Pago</p></a>
                                             </div>
                                             
                                             
@@ -96,21 +96,21 @@
                                             <thead class="thead-light">
                                             <tr>
                                                 <th>#</th>
-                                                <th>FECHA </th>
+                                                <th>NOMBRE</th>
                                                 <th>DETALLE</th>
                                                 <th>MONTO</th>
-                                                
+                                                <th>FECHA </th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php for ($i=0; $i < count($pagoingeniero) ; $i++) { 
+                                                <?php for ($i=0; $i < count($pagotrabajadores) ; $i++) { 
                                                 ?>
                                             <tr>
                                                 <th scope="row"><?php echo $i ?></th>
-                                                <td><?php echo $pagoingeniero[$i]->pag_fecha ?></td>
-                                                <td><?php echo $pagoingeniero[$i]->detalle ?></td>
-                                                <td><?php echo $pagoingeniero[$i]->pag_monto ?></td>
-                                                
+                                                <td><?php echo $pagotrabajadores[$i]->nombre ?></td>
+                                                <td><?php echo $pagotrabajadores[$i]->detalle ?></td>
+                                                <td><?php echo $pagotrabajadores[$i]->pag_monto ?></td>
+                                                <td><?php echo $pagotrabajadores[$i]->pag_fecha ?></td>
                                             </tr>
                                         <?php } ?>
                                             

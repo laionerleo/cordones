@@ -31,9 +31,20 @@ class Pago extends CI_Controller {
 		$d = array();
 		$this->Msecurity->url_and_lan($d);
 		$d["pagoingeniero"]=$this->Mpago->getpagoingeniero();
-		print_r($d["pagoingeniero"]);
+		
 		
 		$this->load->view('pago/index', $d);
+	
+	}
+	/**/
+	public function indext()
+	{	
+		$d = array();
+		$this->Msecurity->url_and_lan($d);
+		$d["pagotrabajadores"]=$this->Mpago->getpagotrabajadores();
+		
+		
+		$this->load->view('pago/indexT', $d);
 	
 	}
 	/**/
@@ -42,40 +53,29 @@ class Pago extends CI_Controller {
 	public function registrarI(){
         $d = array();
         $this->Msecurity->url_and_lan($d);
-        
-		$this->load->view('pago/createI',$d);        	
+        $d["var"]=1;
+		$this->load->view('pago/create',$d);        	
       
 		}	
 	/**/
 	public function registrarT(){
          $d = array();
         $this->Msecurity->url_and_lan($d);
-        
-		$this->load->view('pago/createT',$d);    
+        $d["var"]=0;
+        $d["personas"]=$this->Mpersonas->get_all();
+		$this->load->view('pago/create',$d);    
     }
 	/**/
-	   public function pagoingeniero()
+	   public function guardarpago()
    {
         parse_str($this->input->post("datos"), $nuevodato);
         $nuevodato = $this->Msecurity->sanear_array($nuevodato);
-          $ok=$this->Mpago->guardarI($nuevodato);
+          $ok=$this->Mpago->guardar($nuevodato);
        
         
  
        
    }
-	/**/
-	   public function pagotrabajadores()
-   {
-        parse_str($this->input->post("datos"), $nuevodato);
-        $nuevodato = $this->Msecurity->sanear_array($nuevodato);
-          $ok=$this->Mpago->guardarT($nuevodato);
-       
-        
- 
-       
-   }
-	/**/
 	public function error404($lan='es')
 	{
 		$d = array();

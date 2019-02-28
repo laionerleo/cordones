@@ -50,12 +50,18 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     
                                     <li>
-                                        <a href="form-advanced.html">pago ingenieroi</a>
+                                        <a href="<?=$url?>pagoingeniero">pago del ingeniero</a>
                                     </li>
                                     <li>
-                                        <a href="form-elements.html">pago trabajadores</a>
+                                        <a href="<?=$url?>pagotrabajadores">pago trabajadores</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="<?=$url?>planilla">
+                                    <i class="fe-briefcase"></i>
+                                    <span> planillas    </span>
+                                </a>
                             </li>
 
                             

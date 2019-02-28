@@ -45,112 +45,110 @@
                             </div>
                         </div>     
                         <!-- end page title --> 
+                </div>
+
+              
+                   <div class="row">
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body p-0">
+                                        <div class="p-3 pb-0">
+                                            
+                                            <h5 class="text-muted font-weight-normal mt-0">PLANILLA</h5>
+                                            <form id="frmdetalle">
+                                             <div class="col-sm-10">
+                                                    <select   id="slcperid" name="slcperid"  class="btn btn-primary dropdown-toggle">
+                                                      <?php for ($i=0; $i < count($personas) ; $i++) { 
+                                                        ?>
+                                                        <option value="<?php echo $personas[$i]->per_id ?>"> <?php echo $personas[$i]->per_nombre ?></option>
+                                                    <?php } ?>
+
+                                                    </select>
+                                                  
+                                                </div>
+                                                <input type="hidden" name="pla_id" id="pla_id" value="<?php echo $idplanilla ?>">
+                                                <input type="hidden" name="url" id="url" value="<?=$url?>">
+                                            </form>
+
+                                        </div>
+                                        
+                                        
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                             <div class="col-xl-3 col-lg-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body p-0">
+                                        <div class="p-3 pb-0">
+                                            <div class="col-sm-10">
+                                            
+                                           <button  id="btningresar" class="btn btn-primary" >ingresar</button>
+                                            </div>
+                                        
+                                        </div> <!-- end card-body-->
+                                    </div> <!-- end card-->
+                                </div> <!-- end col-->
+
+                            </div>
+                        </div>
+                    
+
+
+                    <div id="detalleplanilla">
+                     <?php $this->load->View('planilla/listardetalleplanilla'); ?>
+                    </div> 
+
+
+
+                    
 
                        
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">REGISTRAR  PRODUCCION</h4>
-                                      
-            
-                                        <form class="form-horizontal" id="formproduccion">
-                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">TRABAJADOR</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number" name="inpperid" id="inpperid">
-                                                  
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">monto</label>
-                                                <div class="col-sm-10">
-                                                    <input id="inpmonto"  name="inpmonto" type="number" class="form-control" placeholder="introducir cantidad">
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">FECHA</label>
-                                                <div class="col-sm-10">
-                                                    <input id="inpfecha" name="inpfecha" class="form-control date" type="date" value="<?php echo date("Y-m-d");?>">
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                
-                                                <div class="col-sm-10">
-                                                         <input type="hidden" name="url" id="url" value="<?=$url?>">
-                                                <button id="btningresar" type="button" class="btn btn-primary">guardar</button>
+                    </div> <!-- container -->
 
 
-                                                </div>
-                                                <div id="cargaguardar" style="display: none;">
-                                                    <p>listo se guardo</p>
-                                                </div>
-
-                                            </div>
-
-                                          
-                                           
-            
-                                            
-            
-                                        </form>
-            
-                                    </div> <!-- end card-box -->
-                                </div> <!-- end card-->
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->
-                        <script type="text/javascript">
+                <!-- content -->
+                 <script type="text/javascript">
                            
 
                             $("#btningresar").click(
                                     function () {
-                                         
-                                                            var datos=$("#formproduccion").serialize();
-                                                            var urlajax=$("#url").val()+"pago/ingeniero";      
+                                  
+                                      
+                                                            var pla_id=$("#pla_id").val();
+                                                            var per_id=$("#slcperid").val();
+                                                            //alert(pla_id+per_id);
+                                                            var urlajax=$("#url").val()+"planilla/detalleplanilla/guardar";    
+                                                             $("#detalleplanilla").load(urlajax,{pla_id:pla_id,per_id:per_id});   
                                                                    $.ajax({                    
                                                                         url: urlajax,
-                                                                        data: {datos},
+                                                                        data: {pla_id:pla_id,per_id:per_id},
                                                                         type : 'POST',
                                                                         dataType: "json",
                                                                         beforeSend:function( ) {   
-                                                                        $("#inpcantidad").val("");
-
-                                                                        $("#cargaguardar").show(); 
+                                                                     
                                                                         },                    
                                                                         success:function(response) {
                                                                             
-                                                                            
+                                                                            alert(response);
                                                                         },
                                                                         error: function (data) {
-                                                                           
+                                                                          console.log(data);
                                                                         },               
                                                                         complete:function( ) {
-                                                                            $("#cargaguardar").hide();
+                                                                           //
+
                                                                             
                                                                             
                                                                              
                                                                         },
                                                                     }
                                                                     );
-
-
-
                                                                          
                                                             }            
                                                 ); 
                                
                         </script>
-
-                       
-                        <!-- end row -->
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
@@ -181,9 +179,7 @@
         <!-- END wrapper -->
 
 
-        <!-- App js -->
-<!-- App js --><?php $this->load->View('theme/js'); ?>
-        
+        <!-- App js --><?php $this->load->View('theme/js'); ?>
 
     </body>
 

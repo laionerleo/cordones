@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mproduccion extends CI_MODEL {
+class Mplanilla extends CI_MODEL {
 	/**/
 	public function __construct()
     {
@@ -17,31 +17,16 @@ class Mproduccion extends CI_MODEL {
  		return $result;
  	}
  	/**/
- 	public function gettotalcordones(){
+ 	public function getplanilla(){
 
  		
-        $this->db->select_sum('pro_cantidad');
-        $this->db->where('pro_estado',"1");
-        $total=$this->db->get("cor_produccion");
+        
+        $this->db->where('pla_estado',"1");
+        $total=$this->db->get("cor_planilla");
         $result = $total->result();
         return $result;
  	}
  	/**/
-    public function getsumacordones($per_id,$fechai,$fechaf){
-
-        
-        $this->db->select_sum('pro_cantidad');
-        $this->db->where('pro_estado',"1");
-        $this->db->where('per_id',$per_id);
-        $this->db->where('pro_fecha BETWEEN "'. date('Y-m-d', strtotime($fechai)). '" and "'. date('Y-m-d', strtotime($fechaf)).'"');
-        $total=$this->db->get("cor_produccion");
-        $result = $total->result();
-        return $result;
-    }
-    /**/
-
-    
-
     public function getproducciondiaria(){
         $this->db->select("pro_fecha as fecha ,sum(pro_cantidad) as cantidad");
          $this->db->group_by('pro_fecha'); 
@@ -65,15 +50,50 @@ class Mproduccion extends CI_MODEL {
         
     }
     /**/
- 	public function guardar($dator){
+    public function get_detalles($idplanilla){
+		$this->db->where('pla_id',$idplanilla);
+        $total=$this->db->get("cor_detalle_planilla");
+        $result = $total->result();
+        return $result;
+ 	        
+        
+    }
+    /**/
+       public function get_uno_planilla($idplanilla){
+		$this->db->where('pla_id',$idplanilla);
+        $total=$this->db->get("cor_planilla");
+        $result = $total->result();
+        return $result;
+ 	        
+        
+    }
+    /**/
+ 	public function guardar($dato){
     
-    $datos = array( 'pro_cantidad' =>$dator['inpcantidad'],
-                'pro_fecha' =>$dator['inpfecha'],
-                'per_id' =>$dator['slcperid'],
-                'pro_estado' =>"1",
-                        );
+    $datos = array( 'pla_fechainicio' =>$dato['inpfechainicio'],
+                'pla_fechafinal' =>$dato['inpfechafinal'],
+                'pla_estado' =>"1",
+                   );
 
-    $this->db->insert("cor_produccion",$datos);
+    $this->db->insert("cor_planilla",$datos);
+    $cursos=$this->db->insert_id();
+    return $cursos;
+    }
+ 	/**/
+ 	public function guardardetalle($perid,$plaid,$totalcordones,$anticipo,$totalgeneral){
+    
+    $datos = array(
+
+    			'det_totalcordones' =>$totalcordones,
+                'det_totalpaquetes' =>0,
+                'det_anticipo' 		=>$anticipo,
+                'det_total_pagar'	=>$totalgeneral,
+                'per_id' 			=>$perid,
+                'pla_id' 			=>$plaid,
+                'det_estado' 		=>1
+        
+                  );
+    $this->db->insert("cor_detalle_planilla",$datos);
     $cursos=$this->db->insert_id();
     return $cursos;
     }

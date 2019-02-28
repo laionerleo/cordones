@@ -53,13 +53,11 @@
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
-                                            <div class="float-right">
-                                                <i class="mdi mdi-currency-usd text-danger widget-icon"></i>
-                                            </div>
-                                            <h5 class="text-muted font-weight-normal mt-0">Total canceladp</h5>
-                                            <h3 class="mt-2"> </h3>
+                                            
+                                            <h5 class="text-muted font-weight-normal mt-0">Total Cordones</h5>
+                                            <h3 class="mt-2"><?php// echo $totalcordones[0]->pro_cantidad ?></h3>
                                         </div>
-                                        <div id="sparkline1"></div>
+                                        
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
@@ -68,10 +66,10 @@
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
-                                            <div class="float-right">
-                                                 
-                                               <a href="<?=$url?>pagoingeniero/crear"><p style="font-size: 25px">Nuevo Pago</p></a>
-                                            </div>
+                                                <a href="<?=$url?>planilla/crear">
+                                                <h5 class="text-muted font-weight-normal mt-0">Ingresar</h5> 
+                                               <h3 class="mt-2">Nueva Planilla</h3></a>
+                                            
                                             
                                             
 
@@ -87,7 +85,7 @@
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">TABLA PRODUCCION</h4>
+                                        <h4 class="header-title">Planilla</h4>
                                         <p class="text-muted font-13">
                                            tabla de produccion diaria separada por fecha
                                         </p>
@@ -96,20 +94,20 @@
                                             <thead class="thead-light">
                                             <tr>
                                                 <th>#</th>
-                                                <th>FECHA </th>
-                                                <th>DETALLE</th>
-                                                <th>MONTO</th>
+                                                <th>FECHA INICIO</th>
+                                                <th>FECHA FINAL</th>
+                                                <th>DETALLES</th>
                                                 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php for ($i=0; $i < count($pagoingeniero) ; $i++) { 
+                                                <?php for ($i=0; $i < count($planillas) ; $i++) { 
                                                 ?>
                                             <tr>
                                                 <th scope="row"><?php echo $i ?></th>
-                                                <td><?php echo $pagoingeniero[$i]->pag_fecha ?></td>
-                                                <td><?php echo $pagoingeniero[$i]->detalle ?></td>
-                                                <td><?php echo $pagoingeniero[$i]->pag_monto ?></td>
+                                                <td><?php echo $planillas[$i]->pla_fechainicio ?></td>
+                                                <td><?php echo $planillas[$i]->pla_fechafinal ?></td>
+                                                <td><a class="btn btn-primary" href="<?=$url?>planilla/detalle/<?php echo  $planillas[$i]->pla_id ?>">ver detalle</a></td>
                                                 
                                             </tr>
                                         <?php } ?>
@@ -119,9 +117,9 @@
                                     </div> <!-- end card-body -->
                                 </div>
                             </div> <!-- end col -->
-        
                             
                         </div>
+                     <?php // $this->load->View('produccion/listarproduccion'); ?>
 
 
 

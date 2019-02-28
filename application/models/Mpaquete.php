@@ -21,7 +21,6 @@ class Mpaquete extends CI_MODEL {
 
  		
         $this->db->select_sum('paq_cantidad');
-        
         $total=$this->db->get("cor_paquetes");
         $result = $total->result();
         return $result;
