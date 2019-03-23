@@ -48,6 +48,18 @@ class Mpaquete extends CI_MODEL {
         
     }
     /**/
+    public function getsumapaquetes($per_id,$fechai,$fechaf){
+
+        
+        $this->db->select_sum('paq_cantidad');
+        $this->db->where('paq_estado',"1");
+        $this->db->where('per_id',$per_id);
+        $this->db->where('paq_fecha BETWEEN "'. date('Y-m-d', strtotime($fechai)). '" and "'. date('Y-m-d', strtotime($fechaf)).'"');
+        $total=$this->db->get("cor_paquetes");
+        $result = $total->result();
+        return $result;
+    }
+    /**/
  	public function guardar($dator){
     
     $datos = array( 'paq_cantidad' =>$dator['inpcantidad'],

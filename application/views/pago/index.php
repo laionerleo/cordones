@@ -36,11 +36,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="#">Simulor</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                                            <li class="breadcrumb-item"><a href="#">pagos</a></li>
+                                            
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">PAGOS </h4>
                                 </div>
                             </div>
                         </div>     
@@ -49,26 +49,13 @@
 
               
                    <div class="row">
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="card widget-flat">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 pb-0">
-                                            <div class="float-right">
-                                                <i class="mdi mdi-currency-usd text-danger widget-icon"></i>
-                                            </div>
-                                            <h5 class="text-muted font-weight-normal mt-0">Total canceladp</h5>
-                                            <h3 class="mt-2"> </h3>
-                                        </div>
-                                        <div id="sparkline1"></div>
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
+                           
 
                           <div class="col-xl-3 col-lg-6">
                                 <div class="card widget-flat">
                                     <div class="card-body p-0">
                                         <div class="p-3 pb-0">
-                                            <div class="float-right">
+                                            <div class="float">
                                                  
                                                <a href="<?=$url?>pagoingeniero/crear"><p style="font-size: 25px">Nuevo Pago</p></a>
                                             </div>

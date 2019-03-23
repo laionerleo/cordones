@@ -36,11 +36,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="#">Simulor</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                            
+                              
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">PERSONAS</h4>
                                 </div>
                             </div>
                         </div>     
@@ -51,9 +51,9 @@
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Table head options</h4>
+                                        <h4 class="header-title">LISTADO DE PERSONAS</h4>
                                         <p class="text-muted font-13">
-                                            Use one of two modifier classes to make <code>&lt;thead&gt;</code>s appear light or dark gray.
+                                       LISTA DE LAS PERSONAS QUE TRABAJAN 
                                         </p>
             <table class="table mb-0">
                                             <thead>

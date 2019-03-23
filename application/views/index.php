@@ -46,12 +46,78 @@
                         </div>     
                         <!-- end page title --> 
 
+                    
+
+                            <
                        
                         <!-- end row -->
 
                        
                         <!-- end row -->
                     </div> <!-- container -->
+
+                        <div id="contenedor"></div>
+                    
+                        
+
+                        <script type="text/javascript">
+                                                            Highcharts.chart('contenedor', {
+
+                                          title: {
+                                            text: 'Solar Employment Growth by Sector, 2010-2016'
+                                          },
+
+                                          subtitle: {
+                                            text: 'Source: thesolarfoundation.com'
+                                          },
+
+                                          yAxis: {
+                                            title: {
+                                              text: 'Number of Employees'
+                                            }
+                                          },
+                                          legend: {
+                                            layout: 'vertical',
+                                            align: 'right',
+                                            verticalAlign: 'middle'
+                                          },
+
+                                          plotOptions: {
+                                            series: {
+                                              label: {
+                                                connectorAllowed: false
+                                              },
+                                              pointStart: 2019
+                                            }
+                                          },
+
+                                          series: [{
+                                            name: 'PRODUCCION',
+                                            data: [100, 150, 150, 150, 150, 150, 150, 150]
+                                          }],
+
+                                          responsive: {
+                                            rules: [{
+                                              condition: {
+                                                maxWidth: 200
+                                              },
+                                              chartOptions: {
+                                                legend: {
+                                                  layout: 'horizontal',
+                                                  align: 'center',
+                                                  verticalAlign: 'bottom'
+                                                }
+                                              }
+                                            }]
+                                          }
+
+                                });
+
+                                                            
+
+
+                                                            
+</script>
 
                 </div> <!-- content -->
 
@@ -85,16 +151,8 @@
         <!-- END wrapper -->
 
 
-        <!-- App js -->
-        <script src="<?php echo base_url(); ?>application/assets/js/vendor.min.js"></script>
-        <script src="<?php echo base_url(); ?>application/assets/js/app.min.js"></script>
-
-        <!-- Plugins js -->
-        <script src="<?php echo base_url(); ?>application/assets/js/vendor/Chart.bundle.js"></script>
-        <script src="<?php echo base_url(); ?>application/assets/js/vendor/jquery.sparkline.min.js"></script>
-        <script src="<?php echo base_url(); ?>application/assets/js/vendor/jquery.knob.min.js"></script>
-
-        <script src="<?php echo base_url(); ?>application/assets/js/pages/dashboard.init.js"></script>
+         <!-- END wrapper -->
+        <?php $this->load->View('theme/js'); ?>
 
     </body>
 

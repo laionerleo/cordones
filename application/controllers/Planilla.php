@@ -20,7 +20,12 @@ class Planilla extends CI_Controller {
         $this->lang->load('welcome');
 
         //cargamos los modelos
-        $this->load->model(array('Msecurity','Mpersonas','Mplanilla','Mproduccion','Mpago'));
+        $this->load->model(array('Msecurity','Mpersonas','Mplanilla','Mproduccion','Mpago','Mpaquete'));
+            if(!@$_SESSION['user']){
+            $d = array();
+            $this->Msecurity->url_and_lan($d);
+            redirect($d['url']."?m=Usted tiene que iniciar session !!!");
+        }
 
     }
 
@@ -81,12 +86,14 @@ class Planilla extends CI_Controller {
         $plaid=$this->input->post("pla_id");
        	$d["planilla"]= $this->Mplanilla->get_uno_planilla($plaid);
        	$totalcordones= $this->Mproduccion->getsumacordones($perid,$d["planilla"][0]->pla_fechainicio,$d["planilla"][0]->pla_fechafinal);
+       	$totalpaquetes= $this->Mpaquete->getsumapaquetes($perid,$d["planilla"][0]->pla_fechainicio,$d["planilla"][0]->pla_fechafinal);
+       	
        	$anticipo=$this->Mpago->getanticipos($perid,$d["planilla"][0]->pla_fechainicio,$d["planilla"][0]->pla_fechafinal);
        	//print_r($anticipo);
        	//print_r($totalcordones);
-       	$totalgeneral=($totalcordones[0]->pro_cantidad*4)-($anticipo[0]->pag_monto);
+       	$totalgeneral=($totalcordones[0]->pro_cantidad*4) + ($totalpaquetes[0]->paq_cantidad*12)-($anticipo[0]->pag_monto);
 
-       	$ok=$this->Mplanilla->guardardetalle($perid,$plaid,$totalcordones[0]->pro_cantidad,$anticipo[0]->pag_monto,$totalgeneral);
+       	$this->Mplanilla->guardardetalle($perid,$plaid,$totalcordones[0]->pro_cantidad,$totalpaquetes[0]->paq_cantidad,$anticipo[0]->pag_monto,$totalgeneral);
 		//print_r($ok);
 		$d["detalleplanilla"]= $this->Mplanilla->get_detalles($plaid);
        	$this->load->view('planilla/listardetalleplanilla', $d);

@@ -30,7 +30,7 @@ $route[$l.'planilla/detalleplanilla/guardar']                 		= 'Planilla/guar
 
 $route[$l.'paquete/guardarpaquete']   		= 'Paquete/guardar';
 
-
+$route[$l.'login']      				= 'Security';
 $route[$l.'eliminarproduccion/(:num)']    = 'Produccion/eliminar/$1/$2';
 
 $route[$l.'pagoingeniero']                 	= 'Pago';
@@ -40,6 +40,8 @@ $route[$l.'pagotrabajadores/crear']    		= 'Pago/registrarT';
 
 
 $route[$l.'guardarpago']    			= 'Pago/guardarpago';
+$route[$l.'exit']      				= 'Security/exit';
+
 
 
 

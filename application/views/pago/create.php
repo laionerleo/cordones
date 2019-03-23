@@ -36,11 +36,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="#">Simulor</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                                            
+                                            <li class="breadcrumb-item active">nuevo pago</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">PAGOS</h4>
                                 </div>
                             </div>
                         </div>     
@@ -95,7 +95,7 @@
                                              <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">DETALLE</label>
                                                 <div class="col-sm-10">
-                                                    <input id="inpdetalle"  name="inpdetalle" type="number" class="form-control" placeholder="detalle del pago" >
+                                                    <input id="inpdetalle"  name="inpdetalle" type="text" class="form-control" placeholder="detalle del pago" >
                                                 </div>
                                             </div>
                                             

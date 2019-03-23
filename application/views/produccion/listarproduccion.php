@@ -1,13 +1,17 @@
-<div class="row">
-                            <div >
+
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">LISTA PRODUCCION</h4>
-                                        <p class="text-muted font-13">
-                                            lista de produccion con todos los trabajadores
+
+                                        <h4 class="header-title">LISTA DE PRODUCCION</h4>
+                                        <p class="text-muted font-13 mb-4">
+                                            This example shows the multi option. Note how a click on a row will toggle its selected state without effecting other rows,
+                                            unlike the os and single options shown in other examples.
                                         </p>
-            
-                                        <table class="table mb-0">
+                                        
+
+                                        <table id="selection-datatable" class="table dt-responsive nowrap">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -17,7 +21,8 @@
                                                 <th>OPCIONES</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                        
+                                        <tbody>
                                                 <?php for ($i=0; $i < count($produccion) ; $i++) { 
                                                     # code...
                                                  ?>
@@ -30,10 +35,9 @@
                                             </tr>
                                         <?php } ?>
                                             
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- end card-body -->
-                                </div>
-                            </div> <!-- end col -->
-        
+                                            </tbody></table>
+                                    
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
                         </div>

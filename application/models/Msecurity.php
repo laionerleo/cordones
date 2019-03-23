@@ -201,5 +201,18 @@ class Msecurity extends CI_MODEL {
 	}
 
 	/**/
+	public function getUser($post){
+		
+		$pwmd5 = md5($post['password']);
+		$username = $post['username'];
+		$a = array('usu_name'=>$username, 'usu_password'=>$pwmd5, 'usu_status'=>'1');
+		
+		$this->db->where($a);
+		
+		$query = $this->db->get('cor_usuarios');
+   	    $result = $query->result();
+		return @$result[0];
+	}
+	/**/
 
 }

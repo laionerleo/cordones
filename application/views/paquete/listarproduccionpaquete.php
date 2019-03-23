@@ -26,7 +26,7 @@
                                                 <td><?php echo $produccionpaquete[$i]->paq_fecha ?></td>
                                                 <td><?php echo $produccionpaquete[$i]->paq_cantidad ?></td>
                                                 <td><?php echo $produccionpaquete[$i]->per_nombre ?></td>
-                                                td>
+                                                
                                             </tr>
                                         <?php } ?>
                                             

@@ -36,11 +36,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="#">Simulor</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                                            <li class="breadcrumb-item"><a href="<?=$url?>planilla">planilla</a></li>
+                                            <li class="breadcrumb-item active"> nuevo detalle planilla</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">detalle planilla</h4>
                                 </div>
                             </div>
                         </div>     
@@ -117,10 +117,9 @@
                                       
                                                             var pla_id=$("#pla_id").val();
                                                             var per_id=$("#slcperid").val();
-                                                            //alert(pla_id+per_id);
                                                             var urlajax=$("#url").val()+"planilla/detalleplanilla/guardar";    
                                                              $("#detalleplanilla").load(urlajax,{pla_id:pla_id,per_id:per_id});   
-                                                                   $.ajax({                    
+                                                             /*      $.ajax({                    
                                                                         url: urlajax,
                                                                         data: {pla_id:pla_id,per_id:per_id},
                                                                         type : 'POST',
@@ -144,7 +143,8 @@
                                                                         },
                                                                     }
                                                                     );
-                                                                         
+                                                                   
+                                                               */          
                                                             }            
                                                 ); 
                                

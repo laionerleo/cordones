@@ -26,14 +26,28 @@ class Welcome extends CI_Controller {
 
 	/**/
 		/**/
-	public function index()
+	/*public function index()
 	{	
 		$d = array();
 		$this->Msecurity->url_and_lan($d);
 
-		$this->load->view('blanco', $d);
+		$this->load->view('login', $d);
 	
 	}
+*/
+	public function index()
+	{	
+		$d = array();
+		$this->Msecurity->url_and_lan($d);
+		if(@$_SESSION['user']){
+			redirect($d['url']."produccion");
+		}
+		else{
+			$this->load->view('login', $d);
+		}
+	
+	}
+
 	public function plantilla1()
 	{	
 		$d = array();

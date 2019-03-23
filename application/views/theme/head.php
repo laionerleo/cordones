@@ -6,10 +6,40 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="<?php echo base_url(); ?>application/assets/assets/images/favicon.ico">
-            <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/jquery/jquery.min.js">
-            <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/jquery/jquery-3.3.1.min.js">
+
+
+
     <script src="<?php echo base_url(); ?>application/assets/jquery/jquery-3.3.1.min.js"></script>
+    <link href="<?php echo base_url(); ?>application/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    
         <!-- App css -->
         <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>application/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>application/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+           <!-- third party css -->
+        <link href="<?php echo base_url(); ?>application/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>application/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>application/assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>application/assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+
+        <!-- App css -->
+        <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>application/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>application/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        
+        <!-- third party js -->
+        
+<style type="text/css">
+    #contenedor {
+  min-width: 310px;
+  max-width: 800px;
+  height: 400px;
+  margin: 0 auto
+}
+</style>

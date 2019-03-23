@@ -21,6 +21,11 @@ class Pago extends CI_Controller {
 
         //cargamos los modelos
         $this->load->model(array('Msecurity','Mpersonas','Mproduccion','Mpago'));
+            if(!@$_SESSION['user']){
+            $d = array();
+            $this->Msecurity->url_and_lan($d);
+            redirect($d['url']."?m=Usted tiene que iniciar session !!!");
+        }
 
     }
 

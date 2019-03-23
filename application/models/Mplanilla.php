@@ -51,12 +51,23 @@ class Mplanilla extends CI_MODEL {
     }
     /**/
     public function get_detalles($idplanilla){
+        $this->db->select("cor_detalle_planilla.det_totalcordones , cor_detalle_planilla.det_totalpaquetes,cor_personas.per_nombre ,cor_detalle_planilla.det_anticipo,cor_detalle_planilla.det_total_pagar")
+         ->from('cor_detalle_planilla')
+         ->where('det_estado',"1")
+         ->join('cor_personas', 'cor_detalle_planilla.per_id = cor_personas.per_id');
+            $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+        
+
+
+
+
 		$this->db->where('pla_id',$idplanilla);
         $total=$this->db->get("cor_detalle_planilla");
         $result = $total->result();
         return $result;
- 	        
-        
     }
     /**/
        public function get_uno_planilla($idplanilla){
@@ -64,28 +75,24 @@ class Mplanilla extends CI_MODEL {
         $total=$this->db->get("cor_planilla");
         $result = $total->result();
         return $result;
- 	        
-        
     }
     /**/
  	public function guardar($dato){
-    
     $datos = array( 'pla_fechainicio' =>$dato['inpfechainicio'],
                 'pla_fechafinal' =>$dato['inpfechafinal'],
                 'pla_estado' =>"1",
                    );
-
     $this->db->insert("cor_planilla",$datos);
     $cursos=$this->db->insert_id();
     return $cursos;
     }
  	/**/
- 	public function guardardetalle($perid,$plaid,$totalcordones,$anticipo,$totalgeneral){
+ 	public function guardardetalle($perid,$plaid,$totalcordones,$totalpaquetes,$anticipo,$totalgeneral){
     
     $datos = array(
 
     			'det_totalcordones' =>$totalcordones,
-                'det_totalpaquetes' =>0,
+                'det_totalpaquetes' =>$totalpaquetes,
                 'det_anticipo' 		=>$anticipo,
                 'det_total_pagar'	=>$totalgeneral,
                 'per_id' 			=>$perid,
@@ -94,8 +101,8 @@ class Mplanilla extends CI_MODEL {
         
                   );
     $this->db->insert("cor_detalle_planilla",$datos);
-    $cursos=$this->db->insert_id();
-    return $cursos;
+    //$cursos=$this->db->insert_id();
+    //return $cursos;
     }
  	/**/
       public function update($dator){

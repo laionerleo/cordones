@@ -36,11 +36,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="#">Simulor</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                                            <li class="breadcrumb-item"><a href="<?=$url?>paquete">paquetes</a></li>
+                                            <li class="breadcrumb-item active">nuevos  paquetes</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">PAQUETES</h4>
                                 </div>
                             </div>
                         </div>     
@@ -78,7 +78,7 @@
                                             
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">FECHA</label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-2">
                                                     <input id="inpfecha" name="inpfecha" class="form-control date" type="date" value="<?php echo date("Y-m-d");?>">
                                                     
                                                 </div>
@@ -88,13 +88,17 @@
                                                 <div class="col-sm-10">
                                                          <input type="hidden" name="url" id="url" value="<?=$url?>">
                                                 <button id="btningresar" type="button" class="btn btn-primary">INGRESAR</button>
+                                                 <div id="cargaguardar" style="display: none;">
+                                                    <div>
+                                                         <i class="dripicons-thumbs-up"> <p>listo se guardo</p></i> 
+                                                        
+                                                </div>
+
 
 
                                                 </div>
-                                                <div id="cargaguardar" style="display: none;">
-                                                    <p>listo se guardo</p>
-                                                </div>
-
+                                               
+                                            </div>
                                             </div>
 
                                           
@@ -123,6 +127,10 @@
                                                             var datos=$("#formproduccion").serialize();
                                                             var urlajax=$("#url").val()+"paquete/guardarpaquete";    
                                                             $("#listarproduccion").load(urlajax,{datos});   
+                                                            $("#cargaguardar").show(); 
+                                                            $("#inpcantidad").val("");
+
+                                                            setTimeout(function() {$("#cargaguardar").hide(); }, 1500) ;  
                                                                  /*  $.ajax({                    
                                                                         url: urlajax,
                                                                         data: {datos},
@@ -156,8 +164,11 @@
 
 
                                                                          
+                            
                                                             }            
+                            
                                                 ); 
+
                                
                         </script>
 

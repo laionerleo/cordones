@@ -93,9 +93,9 @@
 
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="<?php echo base_url(); ?>application/assets/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    <!--<img src="<?php echo base_url(); ?>application/assets/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">-->
                                     <small class="pro-user-name ml-1">
-                                        Morgan K
+                                        <?=@$_SESSION['user']->usu_nombre?>
                                     </small>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
@@ -125,7 +125,7 @@
                                     <div class="dropdown-divider"></div>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="<?=$url?>exit" class="dropdown-item notify-item">
                                         <i class="fe-log-out"></i>
                                         <span>Logout</span>
                                     </a>
@@ -140,13 +140,12 @@
                         <div class="app-search">
                             <form>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <input type="hidden"  class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fe-search"></i>
-                                        </button>
+                                        
                                     </div>
                                 </div>
                             </form>
                         </div>
-                    </div>
+
+</div>
