@@ -54,6 +54,7 @@ class Mplanilla extends CI_MODEL {
         $this->db->select("cor_detalle_planilla.det_totalcordones , cor_detalle_planilla.det_totalpaquetes,cor_personas.per_nombre ,cor_detalle_planilla.det_anticipo,cor_detalle_planilla.det_total_pagar")
          ->from('cor_detalle_planilla')
          ->where('det_estado',"1")
+        ->where('cor_detalle_planilla.pla_id',$idplanilla)
          ->join('cor_personas', 'cor_detalle_planilla.per_id = cor_personas.per_id');
             $query = $this->db->get();
 
